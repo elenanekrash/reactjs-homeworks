@@ -1,0 +1,9 @@
+h1 {
+    color: blue;
+}
+
+li {
+  color: rgb(0, 172, 40);       
+  font-size: 18px;     
+  margin-bottom: 5px;  
+}
