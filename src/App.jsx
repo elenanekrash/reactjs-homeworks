@@ -1,17 +1,8 @@
-import { ShoppingCart, Star } from "lucide-react";
-import './App.css'
+import MenuPage from "./pages/MenuPage";
 
-function App() {
-    return (
-        <div className="min-h-screen bg-[#f2f7f7] text-gray-800">
-            <Navbar />
-            <Hero />
-            <Footer />
-        </div>
-    );
+export default function App() {
+    return <MenuPage />;
 }
-
-export default App
 
 /* ---------------- NAVBAR ---------------- */
 
@@ -155,4 +146,3 @@ function Footer() {
         </footer>
     );
 }
-
