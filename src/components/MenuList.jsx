@@ -1,8 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import MealCard from "./MealCard";
 
 export default function MenuList({ meals, addToCart }) {
+
     const [visibleCount, setVisibleCount] = useState(6);
+
+    useEffect(() => {
+        setVisibleCount(6);
+    }, [meals]);
 
     const visibleMeals = meals.slice(0, visibleCount);
 
@@ -11,8 +16,9 @@ export default function MenuList({ meals, addToCart }) {
     };
 
     return (
-        <div>
+        <>
             <div className="grid grid-cols-2 gap-6">
+
                 {visibleMeals.map((meal) => (
                     <MealCard
                         key={meal.id}
@@ -20,6 +26,7 @@ export default function MenuList({ meals, addToCart }) {
                         onAdd={() => addToCart(meal)}
                     />
                 ))}
+
             </div>
 
             {visibleCount < meals.length && (
@@ -32,6 +39,6 @@ export default function MenuList({ meals, addToCart }) {
                     </button>
                 </div>
             )}
-        </div>
+        </>
     );
 }
