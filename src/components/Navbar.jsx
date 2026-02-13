@@ -1,21 +1,42 @@
-export default function Navbar({ cartCount }) {
+import { Link, useLocation } from "react-router-dom";
+
+function Navbar() {
+    const location = useLocation();
+
+    const linkStyle = (path) =>
+        location.pathname === path
+            ? "text-teal-500"
+            : "text-gray-600 hover:text-teal-500";
+
     return (
-        <nav className="flex justify-between items-center px-12 py-6 bg-white">
-            <div className="text-teal-500 font-bold text-xl">Delivery</div>
+        <nav className="flex justify-between items-center px-12 py-6 bg-white shadow-sm">
 
-            <div className="flex gap-8 text-gray-600">
-                <span>Home</span>
-                <span className="text-teal-500">Menu</span>
-                <span>Company</span>
-                <span>Login</span>
+            <div className="text-teal-500 font-bold text-xl">
+                Delivery
             </div>
 
-            <div className="relative bg-teal-500 text-white px-4 py-2 rounded">
-                🛒
-                <span className="absolute -top-2 -right-2 bg-white text-teal-500 rounded-full w-5 h-5 flex items-center justify-center text-xs">
-          {cartCount}
-        </span>
+            <div className="flex gap-8 font-medium">
+
+                <Link to="/" className={linkStyle("/")}>
+                    Home
+                </Link>
+
+                <Link to="/menu" className={linkStyle("/menu")}>
+                    Menu
+                </Link>
+
+                <Link to="/order" className={linkStyle("/order")}>
+                    Order
+                </Link>
+
+                <Link to="/login" className={linkStyle("/login")}>
+                    Login
+                </Link>
+
             </div>
+
         </nav>
     );
 }
+
+export default Navbar;
