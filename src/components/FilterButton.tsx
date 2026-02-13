@@ -1,4 +1,4 @@
-export default function FilterButton({ title, active, onClick }) {
+export default function FilterButton({ title, active, onClick }: { title: string, active: boolean, onClick: (title: string) => void }) {
     return (
         <button
             onClick={() => onClick(title)}

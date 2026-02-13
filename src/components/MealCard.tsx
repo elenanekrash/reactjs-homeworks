@@ -1,4 +1,6 @@
-export default function MealCard({ meal, onAdd }) {
+import {Meal} from "../services/api";
+
+export default function MealCard({ meal, onAdd }: { meal: Meal, onAdd: () => void }) {
     return (
         <div className="bg-white p-4 rounded-lg shadow flex gap-4">
             <img

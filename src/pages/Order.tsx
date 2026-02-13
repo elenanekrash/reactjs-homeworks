@@ -1,15 +1,18 @@
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { clearOrder } from "../redux/orderSlice";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import type { RootState, AppDispatch } from "../redux/store";
+import type { OrderItem } from "../redux/orderSlice";
 
-function Order() {
-    const items = useSelector((state) => state.order.items);
-    const dispatch = useDispatch();
+const Order: React.FC = () => {
+    const items = useSelector((state: RootState) => state.order.items);
+    const dispatch = useDispatch<AppDispatch>();
 
     return (
         <>
-            <Navbar />
+            <Navbar cartCount={items.length} />
 
             <section className="min-h-screen bg-[#f3f8f8] p-10">
                 <h1 className="text-3xl font-light mb-6">Your Order</h1>
@@ -18,9 +21,9 @@ function Order() {
                     <p>No items added yet.</p>
                 ) : (
                     <div className="space-y-4">
-                        {items.map((item, index) => (
+                        {items.map((item: OrderItem, index: number) => (
                             <div
-                                key={index}
+                                key={item.id || index}
                                 className="bg-white shadow rounded-xl p-4"
                             >
                                 {item.name}
@@ -40,6 +43,6 @@ function Order() {
             <Footer />
         </>
     );
-}
+};
 
 export default Order;

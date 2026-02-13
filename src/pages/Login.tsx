@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState, ChangeEvent, SubmitEvent } from "react";
 import {
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
@@ -8,19 +8,19 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-function Login() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+const Login: React.FC = () => {
+    const [email, setEmail] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
 
     const navigate = useNavigate();
 
-    const handleLogin = async (e) => {
+    const handleLogin = async (e: SubmitEvent) => {
         e.preventDefault();
 
         try {
             await signInWithEmailAndPassword(auth, email, password);
             navigate("/order");
-        } catch (error) {
+        } catch (error: any) {
             alert(error.message);
         }
     };
@@ -29,9 +29,17 @@ function Login() {
         try {
             await createUserWithEmailAndPassword(auth, email, password);
             alert("User registered successfully!");
-        } catch (error) {
+        } catch (error: any) {
             alert(error.message);
         }
+    };
+
+    const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setEmail(e.target.value);
+    };
+
+    const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setPassword(e.target.value);
     };
 
     return (
@@ -39,20 +47,17 @@ function Login() {
             <Navbar />
 
             <section className="min-h-screen bg-[#f3f8f8] flex items-center justify-center px-4">
-
                 <div className="bg-white shadow-lg rounded-2xl p-10 w-full max-w-md">
-
                     <h1 className="text-3xl font-light text-center mb-8">
                         Login to your account
                     </h1>
 
                     <form onSubmit={handleLogin} className="flex flex-col gap-4">
-
                         <input
                             type="email"
                             placeholder="Email"
                             required
-                            onChange={(e) => setEmail(e.target.value)}
+                            onChange={handleEmailChange}
                             className="border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-teal-400"
                         />
 
@@ -60,7 +65,7 @@ function Login() {
                             type="password"
                             placeholder="Password"
                             required
-                            onChange={(e) => setPassword(e.target.value)}
+                            onChange={handlePasswordChange}
                             className="border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-teal-400"
                         />
 
@@ -78,16 +83,13 @@ function Login() {
                         >
                             Register
                         </button>
-
                     </form>
-
                 </div>
-
             </section>
 
             <Footer />
         </>
     );
-}
+};
 
 export default Login;

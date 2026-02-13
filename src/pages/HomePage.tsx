@@ -1,8 +1,8 @@
+import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-export default function HomePage() {
-
+const HomePage: React.FC = () => {
     return (
         <>
             <Navbar cartCount={0} />
@@ -10,14 +10,10 @@ export default function HomePage() {
             <section className="px-12 py-20 bg-[#f3f8f8] grid md:grid-cols-2 gap-10 items-center">
 
                 {/* LEFT */}
-
                 <div>
-
                     <h1 className="text-5xl font-light leading-tight">
                         Beautiful food & takeaway,
-                        <span className="text-teal-500 font-medium">
-              {" "}delivered
-            </span>
+                        <span className="text-teal-500 font-medium"> delivered</span>
                         <br />
                         to your door.
                     </h1>
@@ -27,7 +23,6 @@ export default function HomePage() {
                     </p>
 
                     {/* DISABLED BUTTON */}
-
                     <button
                         disabled
                         className="
@@ -45,47 +40,32 @@ export default function HomePage() {
                     </button>
 
                     {/* TRUSTPILOT HARDCODED */}
-
                     <div className="mt-8">
-
                         <div className="flex items-center gap-2">
-
                             <span className="text-green-500 text-xl">★</span>
-
-                            <span className="font-medium">
-                Trustpilot
-              </span>
-
+                            <span className="font-medium">Trustpilot</span>
                         </div>
 
                         <p className="text-gray-500 text-sm">
-              <span className="text-teal-500 font-medium">
-                4.8 out of 5
-              </span>{" "}
+                            <span className="text-teal-500 font-medium">4.8 out of 5</span>{" "}
                             based on 2000+ reviews
                         </p>
-
                     </div>
-
                 </div>
 
-
                 {/* RIGHT IMAGE */}
-
                 <div>
-
                     <img
                         src="https://images.unsplash.com/photo-1550547660-d9450f859349"
                         className="rounded-3xl shadow-lg"
+                        alt="Delicious food"
                     />
-
                 </div>
-
             </section>
 
             <Footer />
-
         </>
     );
+};
 
-}
+export default HomePage;

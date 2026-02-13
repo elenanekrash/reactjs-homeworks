@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import MealCard from "./MealCard";
+import type { Meal } from '../services/api';
 
-export default function MenuList({ meals, addToCart }) {
+export default function MenuList({ meals, addToCart }: { meals: Meal[], addToCart: (meal: Meal) => void }) {
 
     const [visibleCount, setVisibleCount] = useState(6);
 
