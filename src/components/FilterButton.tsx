@@ -7,7 +7,7 @@ export default function FilterButton({ title, active, onClick }: { title: string
         ${
                 active
                     ? "bg-teal-500 text-white"
-                    : "bg-white text-gray-600"
+                    : "bg-white text-gray-600 dark:bg-gray-600 dark:text-white"
             }
       `}
         >

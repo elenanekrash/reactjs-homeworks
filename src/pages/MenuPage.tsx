@@ -28,7 +28,6 @@ const MenuPage: React.FC = () => {
         const data: Meal[] = await getMeals();
         setMeals(data);
 
-        // default category
         const filtered = data.filter((meal) => meal.category === "Dessert");
         setFilteredMeals(filtered);
     };
@@ -47,13 +46,13 @@ const MenuPage: React.FC = () => {
         <>
             <Navbar cartCount={cartCount} />
 
-            <main className="px-12 py-12 bg-[#f3f8f8] min-h-screen">
+            <main className="px-12 py-12 min-h-screen bg-gray-100 dark:bg-gray-900 transition-colors">
                 {/* TITLE */}
                 <h1 className="text-center text-4xl text-teal-500 mb-4">
                     Browse our menu
                 </h1>
 
-                <p className="text-center text-gray-500 mb-8">
+                <p className="text-center text-gray-700 dark:text-gray-300 mb-8">
                     Use our menu to place an order online
                 </p>
 

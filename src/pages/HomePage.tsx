@@ -7,18 +7,17 @@ const HomePage: React.FC = () => {
         <>
             <Navbar cartCount={0} />
 
-            <section className="px-12 py-20 bg-[#f3f8f8] grid md:grid-cols-2 gap-10 items-center">
-
+            <section className="px-12 py-20 bg-gray-100 dark:bg-gray-900 grid md:grid-cols-2 gap-10 items-center transition-colors">
                 {/* LEFT */}
                 <div>
-                    <h1 className="text-5xl font-light leading-tight">
+                    <h1 className="text-5xl font-light leading-tight text-gray-900 dark:text-gray-50">
                         Beautiful food & takeaway,
                         <span className="text-teal-500 font-medium"> delivered</span>
                         <br />
                         to your door.
                     </h1>
 
-                    <p className="text-gray-500 mt-6 max-w-md">
+                    <p className="text-gray-500 dark:text-gray-300 mt-6 max-w-md">
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                     </p>
 
@@ -34,6 +33,9 @@ const HomePage: React.FC = () => {
               rounded
               cursor-not-allowed
               opacity-70
+              focus:outline-none
+              focus:ring-2
+              focus:ring-teal-500
             "
                     >
                         Place an Order
@@ -43,10 +45,12 @@ const HomePage: React.FC = () => {
                     <div className="mt-8">
                         <div className="flex items-center gap-2">
                             <span className="text-green-500 text-xl">★</span>
-                            <span className="font-medium">Trustpilot</span>
+                            <span className="font-medium text-gray-900 dark:text-gray-50">
+                Trustpilot
+              </span>
                         </div>
 
-                        <p className="text-gray-500 text-sm">
+                        <p className="text-gray-500 dark:text-gray-300 text-sm">
                             <span className="text-teal-500 font-medium">4.8 out of 5</span>{" "}
                             based on 2000+ reviews
                         </p>
