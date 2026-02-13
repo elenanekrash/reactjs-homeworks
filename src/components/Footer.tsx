@@ -1,32 +1,38 @@
-export default function Footer() {
+import React from "react";
+import { useTranslation } from "react-i18next";
+
+const Footer: React.FC = () => {
+    const { t } = useTranslation();
+
     return (
-        <footer className="bg-gray-100 dark:bg-gray-800 dark:text-white px-12 py-12">
+        <footer className="bg-gray-100 dark:bg-gray-800 dark:text-white px-12 py-12 transition-colors">
             <div className="grid grid-cols-4 gap-6">
-
                 <div>
-                    <h4 className="font-bold">Company</h4>
-                    <p>Home</p>
-                    <p>Order</p>
-                    <p>FAQ</p>
-                    <p>Contact</p>
+                    <h4 className="font-bold">{t("footer.company")}</h4>
+                    <p>{t("footer.home")}</p>
+                    <p>{t("footer.order")}</p>
+                    <p>{t("footer.faq")}</p>
+                    <p>{t("footer.contact")}</p>
                 </div>
 
                 <div>
-                    <h4 className="font-bold">Template</h4>
-
-                    <a href="https://google.com">Style Guide</a><br/>
-                    <a href="https://google.com">Changelog</a><br/>
-                    <a href="https://google.com">Licence</a><br/>
-                    <a href="https://google.com">Webflow University</a>
-
+                    <h4 className="font-bold">{t("footer.template")}</h4>
+                    <a href="https://google.com">{t("footer.styleGuide")}</a>
+                    <br />
+                    <a href="https://google.com">{t("footer.changelog")}</a>
+                    <br />
+                    <a href="https://google.com">{t("footer.licence")}</a>
+                    <br />
+                    <a href="https://google.com">{t("footer.webflowUniversity")}</a>
                 </div>
 
                 <div>
-                    <h4 className="font-bold">Flowbase</h4>
-                    <p>More Cloneables</p>
+                    <h4 className="font-bold">{t("footer.flowbase")}</h4>
+                    <p>{t("footer.moreCloneables")}</p>
                 </div>
-
             </div>
         </footer>
     );
-}
+};
+
+export default Footer;

@@ -1,15 +1,18 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
-import { Sun, Moon } from "lucide-react"; // optional icons library
+import { Sun, Moon } from "lucide-react";
+import LanguageDropdown from "./LanguageDropdown";
+import { useTranslation } from "react-i18next";
 
 interface NavbarProps {
-    cartCount?: number; // optional if you want to display cart later
+    cartCount?: number;
 }
 
 const Navbar: React.FC<NavbarProps> = ({ cartCount = 0 }) => {
     const location = useLocation();
     const { theme, toggleTheme } = useTheme();
+    const { t } = useTranslation();
 
     const linkStyle = (path: string): string =>
         location.pathname === path
@@ -18,15 +21,22 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount = 0 }) => {
 
     return (
         <nav className="flex justify-between items-center px-12 py-6 bg-white dark:bg-gray-900 shadow-sm transition-colors">
-            <div className="text-teal-500 font-bold text-xl">Delivery</div>
+            <div className="text-teal-500 font-bold text-xl">{t("navbar.brand")}</div>
 
             <div className="flex gap-8 font-medium items-center">
-                <Link to="/" className={linkStyle("/")}>Home</Link>
-                <Link to="/menu" className={linkStyle("/menu")}>Menu</Link>
-                <Link to="/order" className={linkStyle("/order")}>Order</Link>
-                <Link to="/login" className={linkStyle("/login")}>Login</Link>
+                <Link to="/" className={linkStyle("/")}>
+                    {t("navbar.home")}
+                </Link>
+                <Link to="/menu" className={linkStyle("/menu")}>
+                    {t("navbar.menu")}
+                </Link>
+                <Link to="/order" className={linkStyle("/order")}>
+                    {t("navbar.order")}
+                </Link>
+                <Link to="/login" className={linkStyle("/login")}>
+                    {t("navbar.login")}
+                </Link>
 
-                {/* THEME SWITCH */}
                 <button
                     onClick={toggleTheme}
                     aria-label="Toggle theme"
@@ -34,6 +44,8 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount = 0 }) => {
                 >
                     {theme === "light" ? <Moon size={18} /> : <Sun size={18} />}
                 </button>
+
+                <LanguageDropdown />
             </div>
         </nav>
     );
